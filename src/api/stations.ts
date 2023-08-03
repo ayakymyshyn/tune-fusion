@@ -6,11 +6,10 @@ import { Station } from "@/interfaces";
 // But IMO project's functionality might scale
 // So using fetch API will not be efficient in this case
 
-const STATIONS_API_ENDPOINT =
-  "https://s3-us-west-1.amazonaws.com/cdn-web.tunein.com/stations.json";
-
 export const getStationsList = async () => {
-  const response = await axios.get<{ data: Station[] }>(STATIONS_API_ENDPOINT);
+  const response = await axios.get<{ data: Station[] }>(
+    import.meta.env.VITE_TUNE_IN_API_URL,
+  );
 
   return response.data.data;
 };
